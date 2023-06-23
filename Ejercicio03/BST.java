@@ -15,7 +15,7 @@ public class BST<T extends Comparable<T>>{
       insert(data, this.root);
     }
   }
-  public Node<T> insert(T data, Node<T> node){
+  private Node<T> insert(T data, Node<T> node){
     Node<T> res = node;
     if(res == null){
       res = new Node<T>(data);
@@ -26,13 +26,20 @@ public class BST<T extends Comparable<T>>{
     }
     return res;
   }
+
+  public T remove(T data){
+    if(isEmpty())
+      return null;
+    return this.remove(data, this.root);
+  }
+  private Node<T> remove(){}
   
   public String inOrden(){
     if(this.isEmpty())
       return "Vacío";
     return inOrden(this.root);
   }
-  public String inOrden(Node<T> node){
+  private String inOrden(Node<T> node){
     String res = "";
     if(node != null){
       res += inOrden(node.getLeftNode());
@@ -41,6 +48,7 @@ public class BST<T extends Comparable<T>>{
     }
     return res;
   }
+
   public String toString(){
     return inOrden();
   }
