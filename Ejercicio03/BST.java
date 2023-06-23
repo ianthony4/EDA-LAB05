@@ -41,4 +41,7 @@ public class BST<T extends Comparable<T>>{
     }
     return res;
   }
+  public String toString(){
+    return inOrden();
+  }
 }
