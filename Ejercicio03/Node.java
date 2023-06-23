@@ -27,4 +27,30 @@ public class Node<T> {
     this.rightNode = rightNode;
     this.balanceFactor = 0;
   }
+  //getter and setters
+  public T getData(){
+    return this.data;
+  }
+  public void setData(T data){
+    this.data = data;
+  }
+  public Node<T> getLeftNode(){
+    return this.leftNode;
+  }
+  public void setLeftNode(Node<T> leftNode){
+    this.leftNode = leftNode;
+  }
+  public Node<T> getRightNode(){
+    return this.rightNode;
+  }
+  public void setRightNode(Node<T> rightNode){
+    this.rightNode = rightNode;
+  }
+  public int getBalanceFactor(){
+    return this.balanceFactor;
+  }
+  public void setBalanceFactor(int balanceFactor){
+    this.balanceFactor = balanceFactor;
+  }
+
 }
