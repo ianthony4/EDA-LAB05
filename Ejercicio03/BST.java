@@ -9,7 +9,21 @@ public class BST<T extends Comparable<T>>{
     return this.root == null;
   }
   public void insert(T data){
-    this.root = new Node<T>(data);
+    if(isEmpty()){
+      this.root = new Node<T>(data);
+    }else{
+      insert(data, this.root);
+    }
   }
-
+  public Node<T> inser(T data, Node<T> node){
+    Node<T> res = node;
+    if(res == null){
+      res = new Node<T>(data);
+    }else if(data.compareTo(res.getData()) < 0){
+      res.setLeft(insert(data, res.getLeft()));
+    }else if(data.compareTo(res.getData()) > 0){
+      res.setRight(insert(data, res.getRight()));
+    }
+    return res;
+  }
 }
