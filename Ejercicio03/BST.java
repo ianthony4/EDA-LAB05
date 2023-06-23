@@ -26,4 +26,19 @@ public class BST<T extends Comparable<T>>{
     }
     return res;
   }
+  
+  public String inOrden(){
+    if(this.isEmpty())
+      return "Vacío";
+    return inOrden(this.root);
+  }
+  public String inOrden(Node<T> node){
+    String res = "";
+    if(node != null){
+      res += inOrden(node.getLeft());
+      res += node.getData() + " ";
+      res += inOrden(node.getRight());
+    }
+    return res;
+  }
 }
