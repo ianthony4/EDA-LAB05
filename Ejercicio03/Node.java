@@ -1,7 +1,7 @@
 public class Node<T> {
   private T data;
-  private Node rightNode;
-  private Node leftNode;
+  private Node<T> leftNode;
+  private Node<T> rightNode;
   private int balanceFactor;
   public Node(){
     this.data = null;

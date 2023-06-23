@@ -15,14 +15,14 @@ public class BST<T extends Comparable<T>>{
       insert(data, this.root);
     }
   }
-  public Node<T> inser(T data, Node<T> node){
+  public Node<T> insert(T data, Node<T> node){
     Node<T> res = node;
     if(res == null){
       res = new Node<T>(data);
     }else if(data.compareTo(res.getData()) < 0){
-      res.setLeft(insert(data, res.getLeft()));
+      res.setLeftNode(insert(data, res.getLeftNode()));
     }else if(data.compareTo(res.getData()) > 0){
-      res.setRight(insert(data, res.getRight()));
+      res.setRightNode(insert(data, res.getRightNode()));
     }
     return res;
   }
@@ -35,9 +35,9 @@ public class BST<T extends Comparable<T>>{
   public String inOrden(Node<T> node){
     String res = "";
     if(node != null){
-      res += inOrden(node.getLeft());
+      res += inOrden(node.getLeftNode());
       res += node.getData() + " ";
-      res += inOrden(node.getRight());
+      res += inOrden(node.getRightNode());
     }
     return res;
   }
