@@ -24,36 +24,36 @@ Tras insertarlos hasta que algún factor de equilibrio este en crítico, observa
 
 ## 3. Elementos insertados: 50 - 25
 
-Tras insertarlos, observamos que el nodo desequilibrado es el 100, por lo tanto hacemos un RSR en este.
+Tras insertarlos, observamos que el nodo desequilibrado es el 100, por lo tanto hacemos un RSR, una rotación simple derecha.
 
 ![Inserción de 50 - 25](03.png)
 
-## 4. Elementos insertados: 100 - 200 - 300
+## 4. Elementos insertados: 350 - 375
 
-Para empezar se insertó los primeros elementos, tras hacerlo según un BST, nos damos cuenta el factor de equilibrio del nodo raíz está en crítico, por lo tanto requerimos de hacer un RSL, una rotación simple a la izquierda.
+Tras insertarlos, el nodo desequilibrado resulta ser el 300 en su nueva posición al cual haremos un RSL.
 
-![Inserción de 100 - 200 - 300](04.png)
+![Inserción de 350 - 375](04.png)
 
-## 5. Elementos insertados: 400 - 500
+## 5. Elementos insertados: 360
 
-Tras insertarlos hasta que algún factor de equilibrio este en crítico, observamos que el nodo desequilibrado es el 300, por lo tanto hacemos un RSL en este.
+Tras insertarlo, el nodo desequilibrado pasa a ser el 400, al cuál haremos un RDR, una rotación doble derecha, que sería un RSL en el nodo 350 y luego un RSR en el nodo 400, o podemos hacerlo de forma directa.
 
-![Inserción de 400 - 500](05.png)
+![Inserción de 360](05.png)
 
-## 6. Elementos insertados: 50 - 25
+## 6. Elementos insertados: 355
 
-Tras insertarlos, observamos que el nodo desequilibrado es el 100, por lo tanto hacemos un RSR en este.
+Su inserción ocasiona que la raíz sea el nodo desequilibrado, por tanto haremos un RDL, una rotación doble izquierda, es decir un RSR en 375 y luego un RSL en 200, o tambien ir por la forma directa.
 
-![Inserción de 50 - 25](06.png)
+![Inserción de 355](06.png)
 
-## 7. Elementos insertados: 100 - 200 - 300
+## 7. Elementos insertados: 150
 
-Para empezar se insertó los primeros elementos, tras hacerlo según un BST, nos damos cuenta el factor de equilibrio del nodo raíz está en crítico, por lo tanto requerimos de hacer un RSL, una rotación simple a la izquierda.
+Tras insertarlo nos muestra que el nodo 200 está desequilibrado, por tanto haremos un RDR, un RSL en 50 y después un RSR en 200, o de forma directa.
 
-![Inserción de 100 - 200 - 300](07.png)
+![Inserción de 150](07.png)
 
-## 8. Elementos insertados: 400 - 500
+## 8. Elementos insertados: 175 - 120 -190
 
-Tras insertarlos hasta que algún factor de equilibrio este en crítico, observamos que el nodo desequilibrado es el 300, por lo tanto hacemos un RSL en este.
+Tras insertarlos el nodo desquelibrado es 200 y aplicamos un RDR, un RSL en 150 y un RSD en 200, o de forma directa.
 
 ![Inserción de 400 - 500](08.png)
