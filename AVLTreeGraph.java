@@ -38,5 +38,12 @@ public class AVLTreeGraph {
             currentNode.setAttribute("layout.frozen");
         }
     }
+
+    public void imprimirArbol() {
+        System.setProperty("org.graphstream.ui", "swing");
+        addNode(tree.root, null);
+        Viewer viewer = graph.display();
+        viewer.disableAutoLayout();
+    }
     
 }
