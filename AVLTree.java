@@ -100,4 +100,48 @@ public class AVLTree<T extends Comparable<T>> {
     int getAltMax(int alt1, int alt2) {
         return Math.max(alt1, alt2);
     }
+
+     //Rotaciones
+    NodeAVL<T> rotateRight(NodeAVL<T> y) {
+        NodeAVL<T> x = y.left;
+        NodeAVL<T> aux = x.right;
+
+        // Realizar rotación
+        x.right = y;
+        y.left = aux;
+
+        // Actualizar alturas
+        y.alt = getAltMax(getAlt(y.left), getAlt(y.right)) + 1;
+        x.alt = getAltMax(getAlt(x.left), getAlt(x.right)) + 1;
+
+        // Actualizar padre
+        if (aux != null) {
+            aux.father = y;
+        }
+        x.father = y.father;
+        y.father = x;
+
+        // Devolver nueva raíz
+        return x;
+    }
+
+    // Rotación a la izquierda
+    NodeAVL<T> rotateLeft(NodeAVL<T> x) {
+        NodeAVL<T> y = x.right;
+        NodeAVL<T> aux = y.left;
+
+        y.left = x;
+        x.right = aux;
+
+        x.alt = getAltMax(getAlt(x.left), getAlt(x.right)) + 1;
+        y.alt = getAltMax(getAlt(y.left), getAlt(y.right)) + 1;
+
+        if (aux != null) {
+            aux.father = x;
+        }
+        y.father = x.father;
+        x.father = y;
+
+        return y;
+    }
 }
