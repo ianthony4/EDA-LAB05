@@ -144,4 +144,65 @@ public class AVLTree<T extends Comparable<T>> {
 
         return y;
     }
+
+    //insert()
+    // Insertar un nodo
+    void insert(T date) {
+        root = insertNode(root, date);
+    }
+
+    //Inserta un nodo y hace las verificaciones
+    NodeAVL<T> insertNode(NodeAVL<T> node, T date) {
+        // Realizar la inserción en un árbol binario de búsqueda
+        //En caso node este vacio
+        if (node == null) {
+            return (new NodeAVL<>(date));
+        }
+
+        //Si la comparacion es -1 entonces asignamos el nodo al lado IZQUIERDO  
+        if (date.compareTo(node.date) < 0) {
+            node.left = insertNode(node.left, date);
+            //asignando padre
+            node.left.father = node;
+
+            //Si el valor del nodo es positivo se inserta en el lado derecho 
+        } else if (date.compareTo(node.date) > 0) {
+            node.right = insertNode(node.right, date);
+            //asignando padre
+            node.right.father = node;
+
+        } else {
+            // Debido a que no se permiten duplicados
+            return node;
+        }
+
+        // Actualizar Altura
+        node.alt = getAltMax(getAlt(node.left), getAlt(node.right)) + 1;
+
+        // Obtener Factor de equilibrio
+        int fe = getFE(node);
+
+        // Rotación hacia la izquierda
+        if (fe > 1 && date.compareTo(node.left.date) < 0) {
+            return rotateRight(node);
+        }
+
+        // Rotación hacia la derecha
+        if (fe < -1 && date.compareTo(node.right.date) > 0) {
+            return rotateLeft(node);
+        }
+
+        // Rotación doble a la izquierda
+        if (fe > 1 && date.compareTo(node.left.date) > 0) {
+            node.left = rotateLeft(node.left);
+            return rotateRight(node);
+        }
+
+        // Rotación doble a la derecha
+        if (fe < -1 && date.compareTo(node.right.date) < 0) {
+            node.right = rotateRight(node.right);
+            return rotateLeft(node);
+        }
+        return node;
+    }
 }
