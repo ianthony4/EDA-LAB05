@@ -205,4 +205,84 @@ public class AVLTree<T extends Comparable<T>> {
         }
         return node;
     }
+
+    //remove()
+    void remove(T date) {
+        root = removeNode(root, date);
+    }
+
+    // Eliminar un nodo del árbol AVL
+    NodeAVL<T> removeNode(NodeAVL<T> root, T date) {
+        // Realizar la eliminación en un árbol binario de búsqueda
+        if (root == null) {
+            return root;
+        }
+
+        if (date.compareTo(root.date) < 0) {
+            root.left = removeNode(root.left, date);
+        } else if (date.compareTo(root.date) > 0) {
+            root.right = removeNode(root.right, date);
+        } else {
+            // Nodo encontrado, realizar la eliminación
+
+            // Caso 1 Nodo con uno o ningún hijo
+            if ((root.left == null) || (root.right == null)) {
+                NodeAVL<T> aux;               //nodo temporal
+                if (root.left != null) {
+                    aux = root.left;
+                } else {
+                    aux = root.right;
+                }
+
+                // En caso no haya ningun hijo
+                if (aux == null) {
+                    aux = root;
+                    root = null;    
+                } else { 
+                    root = aux;
+                    root.father = aux.father;
+                }
+                aux = null;
+            } else {
+                // En este caso para un nodo con 2 hijos
+                NodeAVL<T> son = getNodeMin(root.right);
+                root.date = son.date;
+                // Eliminar el sucesor
+                root.right = removeNode(root.right, son.date);
+            }
+        }
+
+        // Si el árbol tenía solo un nodo, no se necesita hacer más nada
+        if (root == null) {
+            return root;
+        }
+
+        // Actulizamos la altura del nodo
+        root.alt = getAltMax(getAlt(root.left), getAlt(root.right)) + 1;
+
+        int fe = getFE(root);
+        // Rotacion izquiera-izquierda
+        if (fe > 1 && getFE(root.left) >= 0) {
+            return rotateRight(root);
+        }
+
+        // Rotacion izquierda-derechra
+        if (fe > 1 && getFE(root.left) < 0) {
+            root.left = rotateLeft(root.left);
+            return rotateRight(root);
+        }
+
+        // Rotación derecha-derecha
+        if (fe < -1 && getFE(root.right) <= 0) {
+            return rotateLeft(root);
+        }
+
+        // Rotación derecha-izquierda
+        if (fe < -1 && getFE(root.right) > 0) {
+            root.right = rotateRight(root.right);
+            return rotateLeft(root);
+        }
+
+        return root;
+    }
 }
