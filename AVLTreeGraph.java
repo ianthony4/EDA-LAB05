@@ -39,7 +39,7 @@ public class AVLTreeGraph {
         }
     }
 
-    public void imprimirArbol() {
+    public void printTree() {
         System.setProperty("org.graphstream.ui", "swing");
         addNode(tree.root, null);
         Viewer viewer = graph.display();
