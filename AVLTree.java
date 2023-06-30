@@ -26,12 +26,28 @@ public class AVLTree<T extends Comparable<T>> {
         return nodeMin.date;
     }
     //Encontramos el nodo Menor
-    NodeAVL<T> getNodeMin(NodeAVL<T> nodo) {
-        NodeAVL<T> currentNode = nodo;
+    NodeAVL<T> getNodeMin(NodeAVL<T> node) {
+        NodeAVL<T> currentNode = node;
         while (currentNode.left != null) {
             currentNode = currentNode.left;
         }
         return currentNode;
     }
     
+    //getMax()
+    //Retornando el valor del nodo mayor
+    T getMax() {
+        NodeAVL<T> nodeMax = getNodeMax(root);
+        return nodeMax.date;
+    }
+    //Encontramos el nodo Mayor
+    NodeAVL<T> getNodeMax(NodeAVL<T> node) {
+        NodeAVL<T> currentNode = node;
+
+        while (currentNode.right != null) {
+            currentNode = currentNode.right;
+        }
+        return currentNode;
+    }
+
 }
