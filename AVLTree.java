@@ -59,4 +59,23 @@ public class AVLTree<T extends Comparable<T>> {
         return getParent(node);
     }
 
+    //Metodo Son()
+    //Primero encontraremos el hijo izquierdo
+    NodeAVL<T> getSonLeft(NodeAVL<T> node) {
+        return node.left;
+    }
+
+    NodeAVL<T> leftSon(NodeAVL<T> node) {
+        return getSonLeft(node);
+    }
+
+    //Ahora encontremos al hijo derecho
+    NodeAVL<T> getSonRight(NodeAVL<T> node) {
+        return node.right;
+    }
+
+    NodeAVL<T> rightSon(NodeAVL<T> node) {
+        return getSonRight(node);
+    }
+
 }
