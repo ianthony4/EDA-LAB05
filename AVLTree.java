@@ -10,7 +10,13 @@ public class AVLTree<T extends Comparable<T>> {
     //Metodos
     //search(), getMin(), getMax(), parent(), son(), insert(), remove().
     NodeAVL<T> search(NodeAVL<T> node, T date){
-        return null;
+        if(node == null || date.compareTo(node.date)==0){
+            return node;
+        }
+        if(date.compareTo(node.date)<0){
+            return search(node.left, date);
+        }
+        return search(node.right, date);
     }
     
 }
