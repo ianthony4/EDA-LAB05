@@ -285,4 +285,19 @@ public class AVLTree<T extends Comparable<T>> {
 
         return root;
     }
+
+    public void printTree() {
+        printSort(root);
+        System.out.println();
+    }
+
+    private void printSort(NodeAVL<T> node) {
+        if (node != null) {
+            printSort(node.left);
+            int valor = (Integer) node.date;
+            char chart = (char) valor;
+            System.out.print(chart + " ");
+            printSort(node.right);
+        }
+    }
 }
