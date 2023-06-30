@@ -24,5 +24,31 @@ public class Main {
         for (int i = 0; i < arrayChar.length; i++) {
             tree.insert((int) arrayChar[i]);
         }
+        
+        //Buscar un valor (Esto se puede cambiar)
+        char charsearch = 'D';
+
+        boolean result = tree.search((int) charsearch);
+        System.out.println("Busqueda del nodo " + charsearch + " : " + result);
+
+        int minimo = tree.getMin();
+        System.out.println("Nodo de menor valor: " + (char) minimo);
+
+        int maximo = tree.getMax();
+        System.out.println("Nodo de mayor valor: " + (char) maximo);
+
+//      Obtener el PADRE
+        NodeAVL<Integer> node = tree.searchNode(tree.root, (int) charsearch);
+        NodeAVL<Integer> padre = tree.parent(node);
+        System.out.println("Nodo Padre de " + charsearch + " : " + (char) padre.date.intValue());
+
+//      Eliminar un valor
+//      tree.remove((int) charsearch);
+//      result = tree.search((int) charsearch);
+        
+        //Dibujo del arbol
+        tree.printTree();
+        AVLTreeGraph graph = new AVLTreeGraph(tree);
+        graph.printTree();
     }
 }
