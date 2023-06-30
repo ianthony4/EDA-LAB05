@@ -16,27 +16,50 @@ public class AVLTreeGraph<T extends Comparable<T>> {
     }
 
     public AVLTreeGraph(AVLTree<T> tree) {
-        this.AVLTreeGraph()
-        this.setValues(tree)
+        graph = new SingleGraph("AVL tree");
+        graph.setAttribute("ui.stylesheet", styleSheet);
+        System.setProperty("org.graphstream.ui", "swing");
+        this.setNodes(tree);
     }
 
     private void setNodes(AVLTree<T> tree) {
-        if(tree.root == null){
-            return;
-        }
-        alt = tree.root.alt;
-        System.out.print(alt);
+        
+        int alt = tree.root.alt;
+        int anc = 0;
+        setValues(tree.root, alt, anc);
+        System.out.println();
 
         
     }
 
-    private void setValues(NodeAVL<T> node) {
-
+    private void setValues(NodeAVL<T> node, int x, int y) {
+        if(node != null){
+            String valor = node.date.toString();
+            graph.addNode(valor);
+            graph.getNode(valor).setAttribute("xy", x, y);
+            x--;
+            if(node.father != null){
+                graph.addEdge(node.father.value + node.value, node.father.value, node.value);
+            }
+            setValues(node.left, x, y - 1);
+            setValues(node.right, x, y + 1);
+        }
     }
 
     protected void sleep() {
       try { Thread.sleep(1000); } catch (Exception e) {}
   	}
+
+    public void imprimirArbol() {
+        agregarNodo(arbol.raiz, null);
+        Viewer viewer =graph.display();
+        // Colorear el nodo raíz
+        Node nodoRaiz = graph.getNode(0);
+        nodoRaiz.setAttribute("ui.style", "fill-color: red;");
+        nodoRaiz.setAttribute("layout.frozen");
+        graph.setAttribute("layout.force",1);                  
+        viewer.disableAutoLayout();
+    }
 
     protected String styleSheet =
 		"node {"+
