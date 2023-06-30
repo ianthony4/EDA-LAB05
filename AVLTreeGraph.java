@@ -10,6 +10,7 @@ public class AVLTreeGraph {
     public AVLTreeGraph(AVLTree<Integer> tree) {
         this.tree = tree;
         this.graph = new SingleGraph("AVL TREE");
+        System.setProperty("org.graphstream.ui", "swing");
     }
     
     private void addNode(NodeAVL<Integer> node, Node padreNode, double x, double y, double separacion) {

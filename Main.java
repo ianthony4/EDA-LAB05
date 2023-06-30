@@ -38,9 +38,9 @@ public class Main {
         System.out.println("Nodo de mayor valor: " + (char) maximo);
 
 //      Obtener el PADRE
-        NodeAVL<Integer> node = tree.searchNode(tree.root, (int) charsearch);
-        NodeAVL<Integer> padre = tree.parent(node);
-        System.out.println("Nodo Padre de " + charsearch + " : " + (char) padre.date.intValue());
+        // NodeAVL<Integer> node = tree.searchNode(tree.root, (int) charsearch);
+        // NodeAVL<Integer> padre = tree.parent(node);
+        // System.out.println("Nodo Padre de " + charsearch + " : " + (char) padre.date.intValue());
 
 //      Eliminar un valor
 //      tree.remove((int) charsearch);
