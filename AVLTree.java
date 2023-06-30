@@ -78,4 +78,26 @@ public class AVLTree<T extends Comparable<T>> {
         return getSonRight(node);
     }
 
+
+    //Metodos Adicionales para calcular el factor de equilibrio
+    // getAltura
+    int getAlt(NodeAVL<T> node) {
+        if (node == null) {
+            return 0;
+        }
+        return node.alt;
+    }
+
+    // Factor de Equilibrio
+    int getFE(NodeAVL<T> node) {
+        if (node == null) {
+            return 0;
+        }
+        return getAlt(node.left) - getAlt(node.right);
+    }
+
+    // getAlturaMax (entre 2 alturas)
+    int getAltMax(int alt1, int alt2) {
+        return Math.max(alt1, alt2);
+    }
 }
