@@ -18,5 +18,20 @@ public class AVLTree<T extends Comparable<T>> {
         }
         return search(node.right, date);
     }
+
+    //getMin()
+    //Retornando el valor del nodo
+    T getMin() {
+        NodeAVL<T> nodeMin = getNodeMin(root);
+        return nodeMin.date;
+    }
+    //Encontramos el nodo Menor
+    NodeAVL<T> getNodeMin(NodeAVL<T> nodo) {
+        NodeAVL<T> currentNode = nodo;
+        while (currentNode.left != null) {
+            currentNode = currentNode.left;
+        }
+        return currentNode;
+    }
     
 }
