@@ -43,11 +43,20 @@ public class AVLTree<T extends Comparable<T>> {
     //Encontramos el nodo Mayor
     NodeAVL<T> getNodeMax(NodeAVL<T> node) {
         NodeAVL<T> currentNode = node;
-
         while (currentNode.right != null) {
             currentNode = currentNode.right;
         }
         return currentNode;
+    }
+
+    //Metodo parent()
+    //En este metodo debemos encontrar el nodo padre
+    //Recordemos que lo tenemos como atributo
+    NodeAVL<T> getParent(NodeAVL<T> node) {
+        return node.father;
+    }
+    NodeAVL<T> parent(NodeAVL<T> node) {
+        return getParent(node);
     }
 
 }
