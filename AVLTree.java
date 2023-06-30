@@ -160,7 +160,7 @@ public class AVLTree<T extends Comparable<T>> {
         // Realizar la inserción en un árbol binario de búsqueda
         //En caso node este vacio
         if (node == null) {
-            return (new NodeAVL<>(date));
+            return (new NodeAVL<T>(date));
         }
 
         //Si la comparacion es -1 entonces asignamos el nodo al lado IZQUIERDO  
@@ -259,9 +259,9 @@ public class AVLTree<T extends Comparable<T>> {
         // Si el árbol tenía solo un nodo, no se necesita hacer más nada
         if (root == null) {
             return root;
-        }
+        } // redundate
 
-        // Actulizamos la altura del nodo
+        // Actualizamos la altura del nodo
         root.alt = getAltMax(getAlt(root.left), getAlt(root.right)) + 1;
 
         int fe = getFE(root);
@@ -298,9 +298,8 @@ public class AVLTree<T extends Comparable<T>> {
     private void printSort(NodeAVL<T> node) {
         if (node != null) {
             printSort(node.left);
-            int valor = (Integer) node.date;
-            char chart = (char) valor;
-            System.out.print(chart + " ");
+            T valor = node.date; // debbería ser genérico pasar a string
+            System.out.print(valor.toString() + " ");
             printSort(node.right);
         }
     }
